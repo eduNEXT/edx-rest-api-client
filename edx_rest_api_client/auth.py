@@ -34,7 +34,7 @@ class JwtAuth(AuthBase):
         if self.tracking_context is not None:
             data['tracking_context'] = self.tracking_context
 
-        r.headers['Authorization'] = 'JWT {jwt}'.format(jwt=jwt.encode(data, self.signing_key))
+        r.headers['Authorization'] = 'JWT {jwt}'.format(jwt=jwt.encode(data, self.signing_key).decode("UTF-8"))
         return r
 
 
